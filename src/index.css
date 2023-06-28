@@ -6,4 +6,12 @@
     .link{
         @apply cursor-pointer text-sm font-semibold text-dis_blue hover:underline;
     }
+
+    .pink-button{
+        @apply flex bg-dis_pink w-60 rounded-full p-4 font-medium items-center justify-center text-lg hover:bg-pink-500  hover:text-dis_yellow hover:shadow-2xl transition duration-200 ease-in-out;
+    }
+
+    .black-button{
+        @apply flex bg-black w-72 rounded-full p-4 font-medium items-center justify-center text-lg hover:text-dis_green hover:shadow-2xl transition duration-200 ease-in-out hover:bg-gray-800;
+    }
 }
