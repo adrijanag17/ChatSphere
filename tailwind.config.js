@@ -18,6 +18,9 @@ export default {
         dis_yellow: "#FEE75C",
         dis_green: "#57F287"
       },
+      height: {
+        "55vh": "55vh",
+      },
     },
   },
   plugins: [],

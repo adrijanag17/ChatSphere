@@ -14,6 +14,12 @@ function App() {
           <Routes>
             <Route path="/" element={<><Header/><Hero/></>} />
           </Routes>
+          <Routes>
+            <Route path="/channels" element={<></>} />
+          </Routes>
+          <Routes>
+            <Route path="/channels/:id" element={<></>} />
+          </Routes>
         </BrowserRouter>
       </div>
     </>

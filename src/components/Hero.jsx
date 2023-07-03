@@ -4,7 +4,7 @@ import React from 'react'
 function Hero() {
   return (
     <div className='bg-dis_blurple text-white pb-8 md:pb-0'>
-        <div className='p-8 py-10 h-screen md: flex relative'>
+        <div className='p-8 py-10 h-screen md:h-55vh md: flex relative'>
             <div className='flex flex-col gap-8 md:max-w-md lg:max-w-none lg:justify-center'>
                 <h1 className='font-bold text-4xl'>IMAGINE A PLACE...</h1>
                 <h2 className='font-light text-lg tracking-wide lg:max-w-3xl w-full'>
@@ -19,6 +19,10 @@ function Hero() {
                         Open Discord in your browser
                     </button>
                 </div>
+            </div>
+            <div className='flex-grow'>
+                <img src='images/shoe.svg' alt='' className='absolute -left-20 mt-96 sm:-left-40 md:hidden'/>
+                <img src='images/bar.svg' alt='' className='hidden md:inline absolute'/>
             </div>
             
         </div>

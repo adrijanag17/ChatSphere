@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline'
+import { useAuthState } from "react-firebase-hooks/auth"
+import {db, auth, provider} from '../firebase'
+import {signInWithPopup} from 'firebase/auth'
+
+import { useNavigate } from "react-router-dom";
+
 
 function Header() {
-  return (
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    const signIn = (event) => {
+        event.preventDefault();
+        
+        // signInWithPopup(auth, provider)
+        // .then(() => navigate.push("/channels"))
+        // .catch((error) => alert(error.message));
+    };
+
+    return (
     <header className='flex items-center justify-between py-4 px-6'>
         <a href='/'>
             <img src='images/logo_small.svg' alt='Discord logo' className='w-32 h-12 object-contain' />
@@ -17,12 +34,13 @@ function Header() {
             <a className='link'>Careers</a>
         </div>
         <div className='flex space-x-4'>
-            <button className='bg-dis_blurple text-white p-2 rounded-full px-4 text-xs md:text-sm font-semibold hover:text-dis_yellow hover:shadow-2xl transition duration-200 ease-in-out'>
-                Login
+            <button className='bg-dis_blurple text-white p-2 rounded-full px-4 text-xs md:text-sm font-semibold hover:text-dis_yellow hover:shadow-2xl transition duration-200 ease-in-out'
+            onClick={!user ? signIn : () => navigate.push("/channels")}>
+                {!user ? "Login" : "Open Discord"}
             </button>
-        </div>
-        <div>
+            <div>
             <Bars3BottomLeftIcon className='text-dis_blue h-8 cursor-pointer lg:hidden'/>
+            </div>
         </div>
     </header>
   )
