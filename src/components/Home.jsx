@@ -1,13 +1,19 @@
-import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, db } from '../firebase'
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { auth, db } from '../firebase';
 import ServerIcon from './ServerIcon';
-import { PlusIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { PlusIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import Channel from './Channel';
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore';
+import { Navigate } from 'react-router-dom';
 
 function Home() {
-    const [user] = useAuthState(auth)
+    const [user] = useAuthState(auth);
+
+    const [channels] = useCollection(
+        collection(db, 'channels')
+    );
     const handleAddChannel = () => {
         const channelName = prompt("Enter your channel name")
         try {
@@ -25,9 +31,9 @@ function Home() {
 
   return (
     <>
-        {!user && <Redirect to="/"/>}
-        <div className='flex h-screen'>
-            <div className='flex flex-col space-y-3 bg-dis_grey p-3 min-w-max'>
+        {!user && <Navigate to="/"/>}
+        <div className='flex h-screen '>
+            <div className='flex flex-col space-y-3 bg-dis_grey p-3'>
                 <div className='server-default hover:bg-dis_blurple'>
                     <img src='images/logo_white.svg' className='h-5' alt='Discord logo'/>
                 </div>
@@ -50,9 +56,12 @@ function Home() {
                         onClick={handleAddChannel}/>
                     </div>
                     <div className='flex flex-col space-y-2 px-2 mb-4'>
-                        <Channel className='mb-20 min-w-max'/>
-                        <Channel className='mb-20 min-w-max'/>
-                        <Channel className='mb-20 min-w-max'/>
+                        {channels?.docs.map((doc) => (
+                            <Channel 
+                            key={doc.id} 
+                            id={doc.id} 
+                            channelName={doc.data().channelName}/>
+                        ))}
                         
                     </div>
                 </div>

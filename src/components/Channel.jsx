@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Channel() {
+function Channel({id, channelName}) {
+  const setChannel = () => {};
   return (
-    <div>
-        Channel
+    <div className='ml-4' onClick={setChannel}>
+        {channelName}
     </div>
   )
 }
