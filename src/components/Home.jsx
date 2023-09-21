@@ -65,6 +65,11 @@ function Home() {
                         
                     </div>
                 </div>
+                <div className='flex justify-center pb-4 '>
+                    <div className='text-dis_light_grey cursor-pointer' onClick={() => auth.signOut()}>
+                        Logout
+                    </div>
+                </div>
             </div>
         </div>
     </>
