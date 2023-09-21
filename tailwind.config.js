@@ -16,13 +16,14 @@ export default {
         dis_brown: "#582812",
         dis_pink: "#EB459E",
         dis_yellow: "#FEE75C",
-        dis_green: "#57F287"
+        dis_green: "#57F287",
+        dis_server: '#202225'
       },
       height: {
         "55vh": "55vh",
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 }
 

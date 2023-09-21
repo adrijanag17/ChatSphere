@@ -14,4 +14,8 @@
     .black-button{
         @apply flex bg-black w-72 rounded-full p-4 font-medium items-center justify-center text-lg hover:text-dis_green hover:shadow-2xl transition duration-200 ease-in-out hover:bg-gray-800;
     }
+
+    .server-default{
+        @apply h-12 bg-gray-600 rounded-full flex justify-center items-center cursor-pointer hover:rounded-2xl transition-all duration-100 ease-in-out;
+    }
 }

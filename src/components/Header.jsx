@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline'
-import { useAuthState } from "react-firebase-hooks/auth"
-import {db, auth, provider} from '../firebase'
-import {signInWithPopup} from 'firebase/auth'
-
+import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth, provider } from '../firebase';
+import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,9 +13,9 @@ function Header() {
     const signIn = (event) => {
         event.preventDefault();
         
-        // signInWithPopup(auth, provider)
-        // .then(() => navigate.push("/channels"))
-        // .catch((error) => alert(error.message));
+        signInWithPopup(auth, provider)
+        .then(() => navigate("/channels"))
+        .catch((error) => alert(error.message));
     };
 
     return (
@@ -35,7 +34,7 @@ function Header() {
         </div>
         <div className='flex space-x-4'>
             <button className='bg-dis_blurple text-white p-2 rounded-full px-4 text-xs md:text-sm font-semibold hover:text-dis_yellow hover:shadow-2xl transition duration-200 ease-in-out'
-            onClick={!user ? signIn : () => navigate.push("/channels")}>
+            onClick={!user ? signIn : () => navigate("/channels")}>
                 {!user ? "Login" : "Open Discord"}
             </button>
             <div>
