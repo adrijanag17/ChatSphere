@@ -48,7 +48,7 @@ function Chat() {
 
   return (
     <div className='flex flex-col h-screen'>
-        <header className='flex items-center justify-between space-x-5 border-b border-gray-500 p-4'>
+        <header className='flex items-center justify-between space-x-5 p-4'>
             <div className='flex items-center space-x-1'>
                 <HashtagIcon className='h-4 text-dis_light_grey' />
                 <h4 className='text-dis_light_grey'>{channelName}</h4>
@@ -76,7 +76,7 @@ function Chat() {
             <form className='flex-grow'>
                 <input type='text' 
                 disabled={!channelId} 
-                placeholder='Enter your message here!' className='bg-transparent form:outline-none text-white w-full'
+                placeholder='Enter your message here!' className='bg-transparent focus:outline-none focus:ring focus:border-blue-100 text-white w-full'
                 ref={inputRef}/>
                 <button hidden type='submit' onClick={sendMsg}>
                     Send

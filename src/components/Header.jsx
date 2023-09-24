@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
-import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline';
+import React from 'react'
+import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth, provider } from '../firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
+import chat from "../../public/images/chat.json";
+import bubble from "../../public/images/bubble.json";
+import Lottie from 'lottie-react';
 
 
 function Header() {
@@ -19,29 +22,27 @@ function Header() {
     };
 
     return (
-    <header className='flex items-center justify-between py-4 px-6'>
-        <a href='/'>
-            <img src='images/logo_small.svg' alt='Discord logo' className='w-32 h-12 object-contain' />
-        </a>
-        <div className='hidden lg:flex space-x-8'>
-            <a className='link'>Download</a>
-            <a className='link'>Nitro</a>
-            <a className='link'>Discover</a>
-            <a className='link'>Safety</a>
-            <a className='link'>Support</a>
-            <a className='link'>Blog</a>
-            <a className='link'>Careers</a>
-        </div>
-        <div className='flex space-x-4'>
-            <button className='bg-dis_blurple text-white p-2 rounded-full px-4 text-xs md:text-sm font-semibold hover:text-dis_yellow hover:shadow-2xl transition duration-200 ease-in-out'
-            onClick={!user ? signIn : () => navigate("/channels")}>
-                {!user ? "Login" : "Open Discord"}
-            </button>
-            <div>
-            <Bars3BottomLeftIcon className='text-dis_blue h-8 cursor-pointer lg:hidden'/>
+    <div className='bg-gradient-to-br from-green-200 to-yellow-100'>
+    <div className='flex items-center justify-center py-4 '>
+        <Lottie animationData={bubble} className='cursor-pointer w-25 h-12' href='/'/>
+        <span className='font-bold text-lg'>ChatSphere</span>
+    </div>
+    <div className='p-8 py-10 h-screen flex'>
+        <div className='flex flex-col gap-8 pt-20'>
+            <h1 className='font-bold text-4xl'>ChatSphere is ...</h1>
+            <h2 className='font-light text-lg tracking-wide w-full'>
+            a place where you can chat with your friends about your various interests, & have all your conversations neatly organized into dedicated channels!
+            </h2>
+            <div className='flex flex-col gap-8'>
+                <button className='bg-dis_blurple text-white p-2 rounded-full text-md font-semibold hover:text-dis_yellow hover:shadow-2xl transition duration-200 ease-in-out w-52'
+                onClick={!user ? signIn : () => navigate("/channels")}>
+                    {!user ? "Login" : "Open ChatSphere"}
+                </button>
             </div>
         </div>
-    </header>
+        <Lottie animationData={chat} className=''/>
+    </div>
+    </div>
   )
 }
 
