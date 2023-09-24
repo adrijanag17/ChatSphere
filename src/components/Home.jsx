@@ -7,6 +7,7 @@ import { PlusIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import Channel from './Channel';
 import { addDoc, collection } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
+import Chat from './Chat';
 
 function Home() {
     const [user] = useAuthState(auth);
@@ -70,6 +71,9 @@ function Home() {
                         Logout
                     </div>
                 </div>
+            </div>
+            <div className='bg-dis_grey flex-grow'>
+                <Chat />
             </div>
         </div>
     </>
